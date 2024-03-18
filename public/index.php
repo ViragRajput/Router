@@ -9,8 +9,8 @@ use App\Controllers\ContactController;
 
 // Define your routes
 Route::get('/', [HomeController::class, 'index']);
-// Route::get('/about', [AboutController::class, 'index'])->name('about');
-// Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // Route::get('/', 'HomeController@index');
 
