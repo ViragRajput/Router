@@ -4,9 +4,9 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use ViragRouter\Route;
 use ViragRouter\Router;
-use App\Controllers\HomeController;
-use App\Controllers\AboutController;
-use App\Controllers\ContactController;
+use Examples\App\Controllers\HomeController;
+use Examples\App\Controllers\AboutController;
+use Examples\App\Controllers\ContactController;
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -21,4 +21,4 @@ $router = new Router();
 
 
 // Handle incoming requests
-$router->handle(new \App\Http\Request());
+$router->handle(new \Examples\App\Http\Request());

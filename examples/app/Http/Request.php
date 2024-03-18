@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace Examples\App\Http;
 
 use ViragRouter\RequestInterface;
 
