@@ -1,0 +1,25 @@
+{
+    "name": "viragrajput/viragrouter",
+    "description": "A custom router package for handling HTTP routing in PHP applications",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ViragRouter\\": "src/",
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ViragRajput",
+            "email": "108286928+ViragRajput@users.noreply.github.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "require": {
+        
+    }
+}
