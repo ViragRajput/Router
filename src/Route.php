@@ -103,9 +103,7 @@ class Route
             static::$router = new \ViragRouter\Router();
         }
 
-        // Check if the method exists in the Router class
         if (method_exists(static::$router, $method)) {
-            // Call the method on the Router instance and return it
             return call_user_func_array([static::$router, $method], $args);
         }
 

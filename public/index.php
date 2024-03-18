@@ -8,27 +8,17 @@ use App\Controllers\HomeController;
 use App\Controllers\AboutController;
 use App\Controllers\ContactController;
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Define your routes
-// Route::get('/', [HomeController::class, 'index']);
-// Route::get('/about', [AboutController::class, 'index'])->name('about');
-// Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 $router = new Router();
 
-// Define routes using Route::get() method
-// $router->get('/', function () {
-//     return 'Home Page';
-// });
 
-// $router->get('/about', function () {
-//     return 'About Page';
-// });
-
-// Route::get('/', 'HomeController@index');
-
-Route::get('/', function () {
-    echo "Hello, World!";
-});
 
 // Handle incoming requests
 $router->handle(new \App\Http\Request());

@@ -170,7 +170,6 @@ class Router
     public function get(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -183,7 +182,6 @@ class Router
     public function post(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -196,7 +194,6 @@ class Router
     public function put(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -208,7 +205,6 @@ class Router
     public function delete(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -220,7 +216,6 @@ class Router
     public function patch(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -232,7 +227,6 @@ class Router
     public function head(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -244,7 +238,6 @@ class Router
     public function options(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
@@ -256,7 +249,6 @@ class Router
     public function any(string $pattern, array $handler): Route
     {
         if (is_callable($handler)) {
-            // If handler is a closure, treat it as the route handler
             $handler = [$handler];
         } else if (!is_array($handler)) {
             throw new \InvalidArgumentException('Route handler must be a closure or an array');
