@@ -6,6 +6,6 @@ class HomeController
 {
     public function index()
     {
-        echo "Welcome to the home page!";
+        echo "HomeController@index is called";
     }
 }

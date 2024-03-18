@@ -138,25 +138,31 @@ class Router
 
     private function matchesPattern(string $pattern, string $uri): bool
     {
-        $patternParts = explode('/', trim($pattern, '/'));
-        $uriParts = explode('/', trim($uri, '/'));
+        list($path, $query) = explode('?', $uri, 2) + ['', ''];
 
-        if (count($patternParts) !== count($uriParts)) {
-            return false;
+        $pattern = preg_replace_callback('/\{(\w+)(?::([^{}]+))?(\?)?\}/', function ($matches) {
+            $paramName = $matches[1];
+            $paramPattern = isset($matches[2]) ? $matches[2] : '[^\/]+';
+            $optional = isset($matches[3]) ? '?' : '';
+            return "(?P<$paramName>$paramPattern$optional)";
+        }, $pattern);
+
+        $pattern = str_replace('\*', '.*', preg_quote($pattern, '/'));
+
+        $pattern = '/^' . $pattern . '$/i';
+
+        $matches = [];
+        $isMatch = preg_match($pattern, $path, $matches);
+
+        if ($isMatch) {
+            $this->routeParams = array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY);
+            unset($this->routeParams[0]);
         }
 
-        $params = [];
+        parse_str($query, $queryParams);
+        $this->routeParams += $queryParams;
 
-        foreach ($patternParts as $key => $part) {
-            if ($part[0] === '{' && $part[strlen($part) - 1] === '}') {
-                $params[trim($part, '{}')] = $uriParts[$key];
-            } elseif ($part !== $uriParts[$key]) {
-                return false;
-            }
-        }
-
-        $this->routeParams = $params;
-        return true;
+        return (bool)$isMatch;
     }
 
     // Http Method

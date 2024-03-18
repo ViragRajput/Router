@@ -13,7 +13,6 @@ composer require viragrajput/viragrouter
 ## Run local PHP Server
 ```
 php -S localhost:8000 -t public
-
 ```
 
 ## Usage
