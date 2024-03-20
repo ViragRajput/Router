@@ -2,6 +2,12 @@
 
 ViragRouter is a lightweight PHP router package that allows you to easily define and handle routes in your PHP applications.
 
+With ViragRouter, you're equipped with a robust suite of capabilities essential for efficient route handling: seamless route definition, dynamic parameter management, route grouping with middleware support, named routes for URL generation, and more. Its lightweight architecture guarantees minimal overhead, delivering optimal performance without sacrificing functionality.
+
+## Note :
+
+ViragRouter is actively developed and continuously enhanced. While it's currently in its developmental phase and may contain occasional bugs, so  it is not recommended for production use at this time. We appreciate your patience and understanding as i work towards delivering a stable and reliable product. However, you can safely use it for learning purposes, exploring its features, and exploring advanced routing concepts in PHP.
+
 ## Installation
 
 You can install ViragRouter via Composer:
@@ -100,29 +106,19 @@ echo "Profile URL: $url";
 
 ### Handling Requests
 
-You can handle incoming requests using the `handle` method of the `Router` class. Here's an example:
+You can handle incoming requests using the dispatch method of the Router class. Here's an example:
 
 ```php
-use ViragRouter\Router;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 $router = new Router();
-$request = new MyRequestImplementation(); // Implement RequestInterface
-$router->handle($request);
+
+$request = Request::createFromGlobals();
+$response = $router->dispatch($request);
+$response->send();
 ```
 
-## Request Interface
-
-ViragRouter expects a request object that implements the `RequestInterface`. Here's an example of the interface:
-
-```php
-namespace ViragRouter;
-
-interface RequestInterface
-{
-    public function getMethod(): string;
-    public function getUri(): string;
-}
-```
 
 ## How To Use This Package in Your Custom PHP Project
 
@@ -166,50 +162,17 @@ In your Project entry point (e.g., `index.php`), create a router instance and ha
 require_once 'vendor/autoload.php';
 
 use ViragRouter\Router;
-use YourCustomProject\Request; // Assuming you have a custom request implementation
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 $router = new Router();
 
-$request = new Request($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
-
-$router->handle($request);
+$request = Request::createFromGlobals();
+$response = $router->dispatch($request);
+$response->send();
 ```
 
-### Step 4: Implement Your Custom Request Class
-
-Ensure that you have a custom request class that implements the `RequestInterface`. This class should provide methods to retrieve the HTTP method and URI. Here's an example:
-
-```php
-// YourCustomProject/Request.php
-
-namespace YourCustomProject;
-
-use ViragRouter\RequestInterface;
-
-class Request implements RequestInterface
-{
-    private $method;
-    private $uri;
-
-    public function __construct($method, $uri)
-    {
-        $this->method = $method;
-        $this->uri = $uri;
-    }
-
-    public function getMethod(): string
-    {
-        return $this->method;
-    }
-
-    public function getUri(): string
-    {
-        return $this->uri;
-    }
-}
-```
-
-### Step 5: Handle Requests in Your Custom Project
+### Step 4: Handle Requests in Your Custom Project
 
 In your custom Project, ensure that you have logic to handle requests and invoke the appropriate route handlers based on the incoming requests.
 

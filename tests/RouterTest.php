@@ -31,7 +31,7 @@ class RouterTest extends TestCase
     private function simulateRequest(Router $router, $method, $uri)
     {
         ob_start(); // Start output buffering
-        $router->handle($this->createRequestMock($method, $uri));
+        $router->dispatch($this->createRequestMock($method, $uri));
         $output = ob_get_clean(); // Get the output buffer content and clean the buffer
         return $output ?: null; // Return null if output is empty
     }

@@ -2,6 +2,10 @@
 
 namespace ViragRouter;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+
 class Router
 {
     private $routes = [];
@@ -86,22 +90,6 @@ class Router
         $this->routeGroupAttributes = array_merge($this->routeGroupAttributes, $attributes);
         $callback($this);
         $this->routeGroupAttributes = $previousAttributes;
-    }
-
-    public function handle(RequestInterface $request): void
-    {
-        $method = $request->getMethod();
-        $uri = $request->getUri();
-
-        foreach ($this->routes as $route) {
-            if ($route->getMethod() === $method && $this->matchesPattern($route->getPattern(), $uri)) {
-                $this->executeMiddleware($route->getMiddleware());
-                $this->executeHandler($route->getHandler());
-                return;
-            }
-        }
-
-        $this->handleNotFound();
     }
 
     private function applyGroupAttributes(Route $route): void
@@ -255,5 +243,24 @@ class Router
         }
         $route = $this->addRoute('GET|POST|PUT|PATCH|DELETE|OPTIONS|HEAD', $pattern, $handler);
         return $route;
+    }
+
+    public function dispatch(Request $request): Response
+    {
+        $method = $request->getMethod();
+        $uri = $request->getPathInfo();
+        dd($uri);
+
+        foreach ($this->routes as $route) {
+            if ($route->getMethod() === $method && $this->matchesPattern($route->getPattern(), $uri)) {
+                $this->executeMiddleware($route->getMiddleware());
+                $this->executeHandler($route->getHandler());
+                return new Response();
+            }
+        }
+
+        $this->handleNotFound();
+        // Return a default 404 response if no route matched
+        return new Response('404 Not Found', 404);
     }
 }
