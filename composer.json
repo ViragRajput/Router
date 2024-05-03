@@ -1,5 +1,5 @@
 {
-    "name": "viragrajput/viragrouter",
+    "name": "viragrajput/router",
     "description": "A custom router package for handling HTTP routing in PHP applications",
     "type": "library",
     "license": "MIT",
