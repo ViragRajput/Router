@@ -1,6 +1,6 @@
 <?php
 
-namespace ViragRouter;
+namespace Virag\Router;
 
 class Route
 {
@@ -100,7 +100,7 @@ class Route
     public static function __callStatic($method, $args)
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         if (method_exists(static::$router, $method)) {
@@ -113,7 +113,7 @@ class Route
     public static function middleware(string $name, callable $middleware): void
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         static::$router->addMiddleware($name, $middleware);
@@ -122,7 +122,7 @@ class Route
     public static function group(array $attributes, callable $callback): void
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         static::$router->group($attributes, $callback);
@@ -131,7 +131,7 @@ class Route
     public static function constraint(string $key, callable $constraint): void
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         static::$router->addConstraint($key, $constraint);
@@ -140,7 +140,7 @@ class Route
     public static function cacheRoutes(): void
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         static::$router->cacheRoutes();
@@ -149,7 +149,7 @@ class Route
     public static function generateUrl(string $name, array $params = []): ?string
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         return static::$router->generateUrl($name, $params);
@@ -158,7 +158,7 @@ class Route
     public static function getRouteByName(string $name): ?Route
     {
         if (!static::$router) {
-            static::$router = new \ViragRouter\Router();
+            static::$router = new \Virag\Router\Router();
         }
 
         return static::$router->getRouteByName($name);

@@ -5,7 +5,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "ViragRouter\\": "src/",
+            "Virag\\Router\\": "src/",
             "Examples\\": "examples/"
         }
     },
@@ -20,6 +20,6 @@
         "phpunit/phpunit": "^9.0"
     },
     "require": {
-        "symfony/http-foundation": "^6.4"
+        "viragrajput/http-foundation": "^1.0"
     }
 }

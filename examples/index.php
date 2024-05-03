@@ -2,8 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use ViragRouter\Route;
-use ViragRouter\Router;
+use Virag\Router\Route;
 use Examples\App\Controllers\HomeController;
 use Examples\App\Controllers\AboutController;
 use Examples\App\Controllers\ContactController;
@@ -16,9 +15,5 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-$router = new Router();
 
-
-
-// Handle incoming requests
-$router->handle(new \Examples\App\Http\Request());
+echo "Hello, World!";

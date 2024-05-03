@@ -1,9 +1,9 @@
 <?php
 
-namespace ViragRouter;
+namespace Virag\Router;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Virag\HttpFoundation\Request;
+use Virag\HttpFoundation\Response;
 
 
 class Router
@@ -248,7 +248,7 @@ class Router
     public function dispatch(Request $request): Response
     {
         $method = $request->getMethod();
-        $uri = $request->getPathInfo();
+        $uri = $request->getPath();
         dd($uri);
 
         foreach ($this->routes as $route) {

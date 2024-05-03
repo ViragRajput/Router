@@ -1,8 +1,8 @@
 <?php
 
+use Virag\Router\Route;
+use Virag\Router\Router;
 use PHPUnit\Framework\TestCase;
-use ViragRouter\Route;
-use ViragRouter\Router;
 use App\Controllers\HomeController;
 use App\Controllers\AboutController;
 
