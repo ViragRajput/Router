@@ -1,4 +1,4 @@
-# ViragRouter
+# Virag Router
 
 ViragRouter is a lightweight PHP router package that allows you to easily define and handle routes in your PHP applications.
 
@@ -13,7 +13,7 @@ ViragRouter is actively developed and continuously enhanced. While it's currentl
 You can install ViragRouter via Composer:
 
 ```bash
-composer require viragrajput/viragrouter
+composer require viragrajput/router
 ```
 
 ## Run local PHP Server
@@ -28,7 +28,7 @@ php -S localhost:8000 -t public
 You can define routes using the `Route` class provided by ViragRouter. Here's an example of how to define a route:
 
 ```php
-use ViragRouter\Route;
+use Virag\Router\Route;
 
 Route::get('/hello', function () {
     echo "Hello, World!";
@@ -42,7 +42,7 @@ Route::get('/hello', [HelloController::class, 'index']);
 You can define route parameters by enclosing them in curly braces `{}`. These parameters will be passed to your route handler. Here's an example:
 
 ```php
-use ViragRouter\Route;
+use Virag\Router\Route;
 
 Route::get('/users/{id}', function ($id) {
     echo "User ID: $id";
@@ -56,7 +56,7 @@ Route::get('/users/{id}', [UserController::class, 'show']);
 You can group routes and apply common attributes using the `group` method. Here's an example:
 
 ```php
-use ViragRouter\Route;
+use Virag\Router\Route;
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', 'DashboardController@index');
@@ -74,7 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 You can name your routes using the `name` method. Named routes allow you to generate URLs based on the route name. Here's an example:
 
 ```php
-use ViragRouter\Route;
+use Virag\Router\Route;
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 
@@ -86,7 +86,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 You can apply middleware to routes using the `middleware` method. Middleware allows you to filter HTTP requests entering your application. Here's an example:
 
 ```php
-use ViragRouter\Route;
+use Virag\Router\Route;
 
 Route::get('/admin', 'AdminController@index')->middleware('admin');
 
@@ -98,7 +98,7 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
 You can generate URLs for named routes using the `generateUrl` method. Here's an example:
 
 ```php
-use ViragRouter\Route;
+use Virag\Router\Route;
 
 $url = Route::generateUrl('profile');
 echo "Profile URL: $url";
@@ -109,8 +109,8 @@ echo "Profile URL: $url";
 You can handle incoming requests using the dispatch method of the Router class. Here's an example:
 
 ```php
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Virag\HttpFoundation\Request;
+use Virag\HttpFoundation\Response;
 
 $router = new Router();
 
