@@ -249,7 +249,6 @@ class Router
     {
         $method = $request->getMethod();
         $uri = $request->getPath();
-        dd($uri);
 
         foreach ($this->routes as $route) {
             if ($route->getMethod() === $method && $this->matchesPattern($route->getPattern(), $uri)) {
