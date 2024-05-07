@@ -129,7 +129,7 @@ Certainly! Below is an example of how you can integrate the ViragRouter package 
 First, install the ViragRouter package via Composer:
 
 ```bash
-composer require viragrajput/viragrouter
+composer require viragrajput/router
 ```
 
 ### Step 2: Define Routes in Your Custom Project
@@ -162,8 +162,8 @@ In your Project entry point (e.g., `index.php`), create a router instance and ha
 require_once 'vendor/autoload.php';
 
 use ViragRouter\Router;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Virag\HttpFoundation\Request;
+use Virag\HttpFoundation\Response;
 
 $router = new Router();
 
